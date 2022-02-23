@@ -8,7 +8,18 @@ set(CMAKE_RC_COMPILER ${TOOLCHAIN_PREFIX}-windres)
 
 # target environment on the build host system
 set(CMAKE_FIND_ROOT_PATH /usr/${TOOLCHAIN_PREFIX})
+
+# Only build static executables
+set(CMAKE_C_FLAGS_INIT "-static")
+set(CMAKE_CXX_FLAGS_INIT "-static")
+
+# Standard CMake variables
 set(CMAKE_INSTALL_PREFIX /usr/${TOOLCHAIN_PREFIX} CACHE PATH "install path")
+set(BUILD_SHARED OFF CACHE PATH "Always build static")
+set(BUILD_STATIC ON CACHE PATH "Always build static")
+set(BUILD_SHARED_LIBS OFF CACHE PATH "Always build static")
+set(BUILD_STATIC_LIBS ON CACHE PATH "Always build static")
+
 
 # modify default behavior of FIND_XXX() commands
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
