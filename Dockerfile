@@ -9,10 +9,11 @@ ENV SDL_IMAGE_VERSION="2.0.5"
 ENV SDL_TTF_VERSION="2.0.18"
 
 COPY toolchain.cmake /usr/x86_64-w64-mingw32/share/toolchain.cmake
+COPY pkg-config /usr/bin/x86_64-w64-mingw32-pkg-config
 WORKDIR /build
 
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends cmake make pkgconf wget ca-certificates tar unzip gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 mingw-w64-tools binutils-mingw-w64-x86-64 mingw-w64-x86-64-dev && \
+  apt-get install -y --no-install-recommends cmake make pkgconf wget ca-certificates tar unzip gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 binutils-mingw-w64-x86-64 mingw-w64-x86-64-dev && \
   apt-get -y clean autoclean autoremove && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
 
